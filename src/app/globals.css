@@ -77,3 +77,129 @@
 .todo-item:hover::after {
   width: 100%;
 }
+
+/* 6. Mobile Optimizations */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+
+  input, button {
+    font-size: 16px !important;
+  }
+
+  .max-w-md {
+    margin: 0.5rem;
+  }
+}
+
+/* 7. Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .form-checkbox {
+    background-color: #1f2937;
+    border-color: #4b5563;
+  }
+
+  .form-checkbox:hover {
+    border-color: #60a5fa;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #374151;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #4b5563;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+  }
+}
+
+/* 8. Consistent Spacing and Typography */
+:root {
+  --spacing-base: 1rem;
+  --spacing-large: 1.5rem;
+  --spacing-small: 0.5rem;
+}
+
+.text-balanced {
+  text-wrap: balance;
+}
+
+/* 9. Improved Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* 10. Responsive Design */
+.container {
+  width: 100%;
+  padding-right: var(--spacing-base);
+  padding-left: var(--spacing-base);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+/* Focus visible polyfill */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .todo-item::after {
+    display: none;
+  }
+  
+  button, input[type="checkbox"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .todo-item::after {
+    display: none;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
