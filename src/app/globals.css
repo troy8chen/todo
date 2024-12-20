@@ -2,4 +2,78 @@
 @tailwind components;
 @tailwind utilities;
 
+/* 1. Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+}
 
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* 2. Enhanced checkbox styles */
+.form-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid #cbd5e0;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  background-color: white;
+}
+
+.form-checkbox:checked {
+  background-color: #3b82f6;
+  border-color: #3b82f6;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+}
+
+.form-checkbox:hover {
+  border-color: #3b82f6;
+}
+
+/* 3. Smooth transitions - Added in the component classes */
+
+/* 4. Focus states */
+*:focus {
+  outline: none;
+}
+
+/* 5. Placeholder styling */
+::placeholder {
+  color: #a0aec0;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.todo-item {
+  position: relative;
+}
+
+.todo-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #3b82f6;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.todo-item:hover::after {
+  width: 100%;
+}
