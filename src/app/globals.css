@@ -44,41 +44,53 @@
   border-color: #3b82f6;
 }
 
-/* 3. Smooth transitions - Added in the component classes */
-
-/* 4. Focus states */
+/* 3. Focus states */
 *:focus {
   outline: none;
 }
 
-/* 5. Placeholder styling */
+/* 4. Placeholder styling */
 ::placeholder {
   color: #a0aec0;
   opacity: 1;
   transition: opacity 0.2s ease-in-out;
 }
 
-.todo-item {
-  position: relative;
+/* 5. Theme toggle styles */
+.theme-toggle-btn {
+  @apply p-2 rounded-lg transition-colors duration-200;
 }
 
-.todo-item::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background-color: #3b82f6;
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
+.theme-toggle-btn svg {
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
-.todo-item:hover::after {
-  width: 100%;
+/* 6. Dark mode styles */
+[data-mode="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #374151;
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+  --border-color: #4b5563;
+  --checkbox-bg: #4b5563;
+  --checkbox-border: #6b7280;
+  --checkbox-hover: #60a5fa;
 }
 
-/* 6. Mobile Optimizations */
+/* 7. Light mode styles */
+[data-mode="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f4f6;
+  --text-primary: #1a1a1a;
+  --text-secondary: #4b5563;
+  --border-color: #e5e7eb;
+  --checkbox-bg: #ffffff;
+  --checkbox-border: #cbd5e0;
+  --checkbox-hover: #3b82f6;
+}
+
+/* 8. Mobile Optimizations */
 @media (max-width: 640px) {
   html {
     font-size: 14px;
@@ -93,113 +105,66 @@
   }
 }
 
-/* 7. Dark Mode Support */
-@media (prefers-color-scheme: dark) {
+/* 9. Dark mode checkbox styles */
+[data-mode="dark"] .form-checkbox {
+  background-color: var(--checkbox-bg);
+  border-color: var(--checkbox-border);
+}
+
+[data-mode="dark"] .form-checkbox:hover {
+  border-color: var(--checkbox-hover);
+}
+
+/* 10. Dark mode scrollbar */
+[data-mode="dark"] ::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+[data-mode="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+}
+
+[data-mode="dark"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* 11. Transitions */
+.transition-all {
+  transition: all 0.2s ease-in-out;
+}
+
+/* 12. Print styles */
+@media print {
+  * {
+    background-color: white !important;
+    color: black !important;
+  }
+  
   .form-checkbox {
-    background-color: #1f2937;
-    border-color: #4b5563;
+    border: 2px solid #000 !important;
   }
-
-  .form-checkbox:hover {
-    border-color: #60a5fa;
+  
+  .form-checkbox:checked {
+    background-image: none;
+    position: relative;
   }
-
-  ::-webkit-scrollbar-track {
-    background: #374151;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #4b5563;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #6b7280;
+  
+  .form-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
   }
 }
 
-/* 8. Consistent Spacing and Typography */
-:root {
-  --spacing-base: 1rem;
-  --spacing-large: 1.5rem;
-  --spacing-small: 0.5rem;
-}
-
-.text-balanced {
-  text-wrap: balance;
-}
-
-/* 9. Improved Accessibility */
+/* 13. Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-}
-
-/* 10. Responsive Design */
-.container {
-  width: 100%;
-  padding-right: var(--spacing-base);
-  padding-left: var(--spacing-base);
-  margin-right: auto;
-  margin-left: auto;
-}
-
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
-}
-
-/* Focus visible polyfill */
-:focus:not(:focus-visible) {
-  outline: none;
-}
-
-:focus-visible {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
-}
-
-/* Touch device optimizations */
-@media (hover: none) {
-  .todo-item::after {
-    display: none;
-  }
-  
-  button, input[type="checkbox"] {
-    min-height: 44px;
-    min-width: 44px;
-  }
-}
-
-/* Print styles */
-@media print {
-  .todo-item::after {
-    display: none;
-  }
-  
-  body {
-    background: white !important;
-    color: black !important;
   }
 }
