@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 
 interface Todo {
@@ -20,7 +20,7 @@ export default function Home() {
       const newTodo: Todo = {
         id: generateId(),
         text: input.trim(),
-        completed: false
+        completed: false,
       };
       setTodos([...todos, newTodo]);
       setInput('');
@@ -52,7 +52,7 @@ export default function Home() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && addTodo()}
-              placeholder='Add Todo'
+              placeholder="Add Todo"
               className="flex-grow px-4 py-2 border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <button
@@ -70,7 +70,7 @@ export default function Home() {
               >
                 <div className="flex item-center">
                   <input
-                    type='checkbox'
+                    type="checkbox"
                     checked={todo.completed}
                     onChange={() => toggleTodo(todo.id)}
                     className="mr-3 form-checkbox text-blue-500"
@@ -85,19 +85,20 @@ export default function Home() {
                 </div>
                 <button 
                   onClick={() => deleteTodo(todo.id)} 
-                  className="text-red-500 hover:text-red-700">
-                    Delete
+                  className="text-red-500 hover:text-red-700"
+                >
+                  Delete
                 </button>
               </li>
             ))}
           </ul>
-            {todos.length === 0 && (
-              <p className="text-center text-gray-500 mt-4">
-                  No tasks yet. Feel free to add anything!
-              </p>
-            )}
+          {todos.length === 0 && (
+            <p className="text-center text-gray-500 mt-4">
+              No tasks yet. Feel free to add anything!
+            </p>
+          )}
         </div>
       </div>
     </div>
-  )
+  );
 }
