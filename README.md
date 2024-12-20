@@ -1,6 +1,30 @@
 # Minimalist Todo List
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app). Also style with [tailwind.css](https://tailwindcss.com/)
 
+## Folder Structure
+
+```bash
+src/
+├── app/                      # Next.js 13+ app directory
+│   ├── favicon.ico
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── components/              # Reusable components
+│   ├── Footer/
+│   ├── Header/
+│   ├── TodoInput/
+│   ├── TodoItem/
+│   └── TodoList/
+├── contexts/               # React contexts
+├── hooks/                  # Custom hooks
+│   └── useTodos.ts
+├── types/                 # TypeScript types/interfaces
+│   └── todo.ts
+└── utils/                 # Utility functions
+    └── generateId.ts
+```
+
 ## Getting Started
 
 First, run the development server:
