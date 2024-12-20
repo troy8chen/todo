@@ -1,29 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProviderWrapper } from "@/components/ThemeProviderWrapper";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: 'swap',
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   title: "Todo List",
   description: "Minimalist task manager",
   keywords: ["todo", "task manager", "productivity", "minimalist"],
   authors: [{ name: "Your Name" }],
-  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+  },
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#1a1a1a" }
+    { media: "(prefers-color-scheme: dark)", color: "#1a1a1a" },
   ],
 };
 
@@ -34,17 +25,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} 
-          min-h-screen antialiased
-          bg-gradient-to-b from-gray-50 to-gray-100
-          dark:from-gray-900 dark:to-gray-800
-          transition-colors duration-300`}
-      >
+      <body className="relative min-h-screen antialiased">
+        <div 
+          className="fixed inset-0 bg-gradient-to-b from-gray-50 to-gray-100 
+            dark:from-gray-900 dark:to-gray-800 transition-all duration-200"
+        />
         <ThemeProviderWrapper>
-          <main className="max-w-4xl mx-auto px-4 py-8">
-            {children}
-          </main>
+          <div className="relative z-10">
+            <main className="container mx-auto px-4 py-8 max-w-4xl min-h-screen">
+              <div className="animate-fade-in">
+                {children}
+              </div>
+            </main>
+          </div>
         </ThemeProviderWrapper>
       </body>
     </html>

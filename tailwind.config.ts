@@ -1,19 +1,18 @@
 import type { Config } from "tailwindcss";
 import formsPlugin from '@tailwindcss/forms';
 
-export default {
+const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: 'media', // enables dark mode based on system preference
+  darkMode: 'media',
   theme: {
     extend: {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        // Custom colors for our implementation
         gray: {
           50: '#f9fafb',
           100: '#f3f4f6',
@@ -43,37 +42,32 @@ export default {
         },
       },
       spacing: {
-        // Custom spacing for consistent layout
-        'base': '1rem',
-        'large': '1.5rem',
-        'small': '0.5rem',
+        base: '1rem',
+        large: '1.5rem',
+        small: '0.5rem',
       },
       fontSize: {
-        // Responsive typography
-        'xs': ['0.75rem', { lineHeight: '1rem' }],
-        'sm': ['0.875rem', { lineHeight: '1.25rem' }],
-        'base': ['1rem', { lineHeight: '1.5rem' }],
-        'lg': ['1.125rem', { lineHeight: '1.75rem' }],
-        'xl': ['1.25rem', { lineHeight: '1.75rem' }],
+        xs: ['0.75rem', { lineHeight: '1rem' }],
+        sm: ['0.875rem', { lineHeight: '1.25rem' }],
+        base: ['1rem', { lineHeight: '1.5rem' }],
+        lg: ['1.125rem', { lineHeight: '1.75rem' }],
+        xl: ['1.25rem', { lineHeight: '1.75rem' }],
         '2xl': ['1.5rem', { lineHeight: '2rem' }],
         '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
       },
       borderRadius: {
-        // Consistent border radius
-        'sm': '0.125rem',
+        sm: '0.125rem',
         DEFAULT: '0.25rem',
-        'md': '0.375rem',
-        'lg': '0.5rem',
+        md: '0.375rem',
+        lg: '0.5rem',
       },
       boxShadow: {
-        // Enhanced shadows
-        'sm': '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+        sm: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
         DEFAULT: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
-        'md': '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
-        'lg': '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+        md: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+        lg: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
       },
       animation: {
-        // Smooth transitions
         'fade-in': 'fadeIn 0.2s ease-in-out',
         'slide-in': 'slideIn 0.2s ease-in-out',
       },
@@ -88,19 +82,20 @@ export default {
         },
       },
       screens: {
-        // Responsive breakpoints
-        'xs': '375px',
-        'sm': '640px',
-        'md': '768px',
-        'lg': '1024px',
-        'xl': '1280px',
+        xs: '375px',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
         '2xl': '1536px',
       },
     },
   },
   plugins: [
     formsPlugin({
-      strategy: 'class', // only generate classes
+      strategy: 'class',
     }),
   ],
-} satisfies Config;
+};
+
+export default config;
